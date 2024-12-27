@@ -1,99 +1,75 @@
 # CheckPlz
 
-**CheckPlz** is a versatile file scanning tool written in Rust, designed to detect malicious content within files using two robust methods:
-
-- **AMSI (Antimalware Scan Interface)**: Scans file content in-memory to identify threats.
-- **Windows Defender**: Utilizes the built-in antivirus solution for comprehensive file scans.
-
-The tool also features a binary search capability to pinpoint malicious content and provides detailed scan results with both AMSI and Windows Defender outputs.
+**CheckPlz** is a file scanning tool written in Rust that leverages AMSI (Antimalware Scan Interface) and Windows Defender to detect potential threats in files. The tool supports binary search to isolate malicious content within a file, providing detailed scan results.
 
 ## Features
+- **AMSI Scanning:** Utilize the AMSI interface to scan buffers and detect threats.
+- **Windows Defender Scanning:** Use Windows Defender's command-line interface to analyze files for threats.
+- **Binary Search Isolation:** Automatically locate the specific part of the file causing a detection.
+- **Hex Dump Analysis:** Display a hex dump of malicious content.
+- **Debug Mode:** Output detailed debug information during the scan.
+- **ANSI and Raw Output:** Supports colorful terminal output or raw text for easier scripting integration.
 
-- **AMSI Scanning**: Perform in-memory scans using Microsoft's Antimalware Scan Interface.
-- **Windows Defender Integration**: Leverages the Windows Defender command-line interface for threat detection.
-- **Binary Search**: Isolate and identify malicious content within files.
-- **Comprehensive Reporting**: Includes detailed scan results with hex dump analysis.
-- **Flexible Scanning Modes**: Choose between AMSI, Windows Defender, or both.
-- **Debug Mode**: Output detailed information during scans for analysis.
+## Requirements
+- Rust (latest stable version recommended)
+- Windows operating system
 
 ## Installation
-
-1. Install [Rust](https://www.rust-lang.org/tools/install) on your system.
-2. Clone this repository:
+1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/CheckPlz.git
+   git clone https://github.com/your-username/CheckPlz.git
    cd CheckPlz
    ```
-3. Build the project:
+2. Build the project:
    ```bash
    cargo build --release
    ```
-4. Run the executable:
-   ```bash
-   ./target/release/CheckPlz
-   ```
+3. The compiled binary will be available in `target/release/checkplz.exe`.
 
 ## Usage
+Run the tool with the required options:
 
 ```bash
-Usage: CheckPlz [OPTIONS] --file <FILE>
-
-Options:
-  -f, --file <FILE>           Path to the file to scan
-  -a, --amsi                  Use AMSI scan
-  -m, --msdefender            Use Windows Defender scan
-  -d, --debug                 Enable debug mode for detailed output
-  -r, --raw                   Output raw data without ANSI colors
-  -h, --help                  Print help information
-  -V, --version               Print version information
+checkplz --file <FILE_PATH> [--amsi] [--msdefender] [--debug] [--raw]
 ```
+
+### Options
+- `--file <FILE_PATH>`: Path to the file to be scanned (required).
+- `--amsi`: Use AMSI for scanning.
+- `--msdefender`: Use Windows Defender for scanning.
+- `--debug`: Enable debug mode for detailed output.
+- `--raw`: Use raw output without ANSI colors.
 
 ### Examples
+- Scan a file using AMSI:
+  ```bash
+  checkplz --file testfile.exe --amsi
+  ```
 
-```bash
-# Scan a file using AMSI:
-CheckPlz --file path/to/file --amsi
+- Scan a file using Windows Defender with debug output:
+  ```bash
+  checkplz --file testfile.exe --msdefender --debug
+  ```
 
-# Scan a file using Windows Defender:
-CheckPlz --file path/to/file --msdefender
+- Scan a file using both AMSI and Windows Defender, outputting raw text:
+  ```bash
+  checkplz --file testfile.exe --amsi --msdefender --raw
+  ```
 
-# Scan a file using both AMSI and Windows Defender with debug output:
-CheckPlz --file path/to/file --amsi --msdefender --debug
-
-# Output results in raw format:
-CheckPlz --file path/to/file --raw
-```
-
-## How It Works
-
-1. **AMSI Scanning**:
-   - Initializes an AMSI context.
-   - Scans the file content and buffers for threats.
-   - If a threat is detected, performs a binary search to isolate the malicious segment.
-
-2. **Windows Defender Scanning**:
-   - Invokes `MpCmdRun.exe` to scan the file.
-   - Analyzes the output for threat detection.
-   - Performs a binary search if a threat is found.
-
-3. **Binary Search**:
-   - Recursively scans segments of the file to locate malicious content.
-   - Produces detailed logs and results.
-
-## Requirements
-
-- **Windows OS**: Required for AMSI and Windows Defender integration.
-- **Rust**: For building and running the tool.
-- **Windows Defender**: Installed and accessible via `MpCmdRun.exe`.
-
-## Contributions
-
-Contributions are welcome! Feel free to fork this repository, create a new branch, and submit a pull request.
+## Output
+- **Scan Results:** Displays detection status, offset of malicious content (if any), and time taken for the scan.
+- **Hex Dump Analysis:** Provides a detailed view of malicious content for further analysis.
 
 ## License
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+## Contributing
+Contributions are welcome! Feel free to submit issues or pull requests to improve the tool.
 
-## Acknowledgments
+## Disclaimer
+**CheckPlz** is provided for educational and testing purposes only. Use it responsibly and ensure compliance with all applicable laws and regulations.
 
-CheckPlz is built with a focus on precision and reliability, leveraging AMSI and Windows Defender to provide a powerful scanning solution for files.
+---
+
+Happy scanning!
+
