@@ -59,16 +59,4 @@ checkplz --file <FILE_PATH> [--amsi] [--debug] [--raw]
 - **Scan Results:** Displays detection status, potential malicious offsets, and the time taken for scanning.
 - **Hex Dump Analysis:** Detailed views of the suspicious sections, highlighting malicious bytes.
 
-## License
-This project is licensed under the MIT License. Refer to the `LICENSE` file for full details.
-
-## Contribution Guidelines
-We welcome contributions to CheckPlz! Feel free to submit issues or pull requests through the GitHub repository.
-
-## Disclaimer
-**CheckPlz** is a Rust-only adaptation of **ThreatCheck**, developed for educational and testing purposes. Ensure compliance with all applicable laws and regulations while using this tool.
-
----
-
-Take your threat detection capabilities to the next level with **CheckPlz**!
 
