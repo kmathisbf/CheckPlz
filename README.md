@@ -1,18 +1,18 @@
 # CheckPlz
 
-**CheckPlz** is a file scanning tool written in Rust that leverages AMSI (Antimalware Scan Interface) and Windows Defender to detect potential threats in files. The tool supports binary search to isolate malicious content within a file, providing detailed scan results.
+**CheckPlz** is an Rust adaptation of the popular **(ThreatCheck)[https://github.com/rasta-mouse/ThreatCheck]** tool, designed to scan files for potential threats while leveraging AMSI (Antimalware Scan Interface). By isolating malicious content with precision and providing comprehensive analysis, CheckPlz offers an enhanced and efficient file scanning experience.
 
-## Features
-- **AMSI Scanning:** Utilize the AMSI interface to scan buffers and detect threats.
-- **Windows Defender Scanning:** Use Windows Defender's command-line interface to analyze files for threats.
-- **Binary Search Isolation:** Automatically locate the specific part of the file causing a detection.
-- **Hex Dump Analysis:** Display a hex dump of malicious content.
-- **Debug Mode:** Output detailed debug information during the scan.
-- **ANSI and Raw Output:** Supports colorful terminal output or raw text for easier scripting integration.
+## Key Features
+- **Rust Implementation:** Built entirely in Rust for optimal performance and security.
+- **AMSI Integration:** Perform accurate buffer scans for threat detection.
+- **Binary Search Threat Isolation:** Precisely locate the section of a file causing detection.
+- **Hex Dump Analysis:** Visualize malicious content with a detailed hexadecimal and ASCII dump.
+- **Debugging Support:** Enable verbose output for deeper insights.
+- **Customizable Output:** Choose between raw or colorful, human-friendly terminal outputs.
 
-## Requirements
-- Rust (latest stable version recommended)
-- Windows operating system
+## System Requirements
+- **Rust:** Latest stable version for compilation and usage.
+- **Operating System:** Windows (AMSI compatibility required).
 
 ## Installation
 1. Clone the repository:
@@ -20,56 +20,55 @@
    git clone https://github.com/your-username/CheckPlz.git
    cd CheckPlz
    ```
-2. Build the project:
+2. Compile the project:
    ```bash
    cargo build --release
    ```
-3. The compiled binary will be available in `target/release/checkplz.exe`.
+3. The executable will be available at `target/release/checkplz.exe`.
 
-## Usage
-Run the tool with the required options:
+## Usage Instructions
+Run CheckPlz with the desired options:
 
 ```bash
-checkplz --file <FILE_PATH> [--amsi] [--msdefender] [--debug] [--raw]
+checkplz --file <FILE_PATH> [--amsi] [--debug] [--raw]
 ```
 
-### Options
+### Available Options
 - `--file <FILE_PATH>`: Path to the file to be scanned (required).
-- `--amsi`: Use AMSI for scanning.
-- `--msdefender`: Use Windows Defender for scanning.
-- `--debug`: Enable debug mode for detailed output.
-- `--raw`: Use raw output without ANSI colors.
+- `--amsi`: Use AMSI-based scanning to identify threats.
+- `--debug`: Enable verbose debugging output.
+- `--raw`: Produce raw, unformatted text suitable for automation.
 
-### Examples
+### Example Commands
 - Scan a file using AMSI:
   ```bash
-  checkplz --file testfile.exe --amsi
+  checkplz --file malicious.exe --amsi
   ```
 
-- Scan a file using Windows Defender with debug output:
+- Scan a file with debug output enabled:
   ```bash
-  checkplz --file testfile.exe --msdefender --debug
+  checkplz --file suspicious.exe --amsi --debug
   ```
 
-- Scan a file using both AMSI and Windows Defender, outputting raw text:
+- Perform a scan with raw output formatting:
   ```bash
-  checkplz --file testfile.exe --amsi --msdefender --raw
+  checkplz --file unknown.exe --amsi --raw
   ```
 
-## Output
-- **Scan Results:** Displays detection status, offset of malicious content (if any), and time taken for the scan.
-- **Hex Dump Analysis:** Provides a detailed view of malicious content for further analysis.
+## Output Overview
+- **Scan Results:** Displays detection status, potential malicious offsets, and the time taken for scanning.
+- **Hex Dump Analysis:** Detailed views of the suspicious sections, highlighting malicious bytes.
 
 ## License
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+This project is licensed under the MIT License. Refer to the `LICENSE` file for full details.
 
-## Contributing
-Contributions are welcome! Feel free to submit issues or pull requests to improve the tool.
+## Contribution Guidelines
+We welcome contributions to CheckPlz! Feel free to submit issues or pull requests through the GitHub repository.
 
 ## Disclaimer
-**CheckPlz** is provided for educational and testing purposes only. Use it responsibly and ensure compliance with all applicable laws and regulations.
+**CheckPlz** is a Rust-only adaptation of **ThreatCheck**, developed for educational and testing purposes. Ensure compliance with all applicable laws and regulations while using this tool.
 
 ---
 
-Happy scanning!
+Take your threat detection capabilities to the next level with **CheckPlz**!
 
