@@ -1,6 +1,6 @@
 # CheckPlz
 
-**CheckPlz** is an Rust adaptation of the popular **(ThreatCheck)[https://github.com/rasta-mouse/ThreatCheck]** tool, designed to scan files for potential threats while leveraging AMSI (Antimalware Scan Interface). By isolating malicious content with precision and providing comprehensive analysis, CheckPlz offers an enhanced and efficient file scanning experience.
+**CheckPlz** is an Rust adaptation of the popular **[ThreatCheck](https://github.com/rasta-mouse/ThreatCheck)** tool, designed to scan files for potential threats while leveraging AMSI (Antimalware Scan Interface). By isolating malicious content with precision and providing comprehensive analysis, CheckPlz offers an enhanced and efficient file scanning experience.
 
 ## Key Features
 - **Rust Implementation:** Built entirely in Rust for optimal performance and security.
